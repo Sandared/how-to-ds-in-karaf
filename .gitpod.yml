@@ -8,14 +8,21 @@ tasks:
       tar -zvxf karaf.tar.gz &&
       rm karaf.tar.gz &&
       cd /workspace/how-to-ds-in-karaf &&
-      mvn clean install
+      mvn install
     command: >
+      export JAVA_TOOL_OPTIONS="-Xmx4096m" &&
       karaf debug
-    name: Karaf
+    name: Backend
   - command: >
       cd /workspace/apache-karaf-4.3.3/data/log/ &&
       tail -f karaf.log
-    name: Karaf_Log
+    name: Backend_Log
+
+# currently there is no option to ignore ports and do NOT expose them, so every port we now ignore is exposed and can be accessed from outside ... be careful!
+ports:
+# default http port of Karaf
+   - port: 8181
+     onOpen: ignore
 
 vscode:
   extensions:

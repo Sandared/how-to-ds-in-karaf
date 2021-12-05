@@ -1,0 +1,2 @@
+# karaf-submodule-service
+

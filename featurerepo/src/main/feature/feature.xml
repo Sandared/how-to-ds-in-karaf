@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><features xmlns="http://karaf.apache.org/xmlns/features/v1.6.0" name="${project.artifactId}-${project.version}">
+
+    <feature description="A simple service with api and impl" name="my-service" version="${project.version}">
+        <feature>scr</feature>
+                
+        <bundle>mvn:${JATOMS.projectId}/${JATOMS.artifactId}-api/${project.version}</bundle>
+        <bundle>mvn:${JATOMS.projectId}/${JATOMS.artifactId}-basic/${project.version}</bundle>
+    </feature>
+
+</features>
