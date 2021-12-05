@@ -1,0 +1,28 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: >
+      cd /workspace &&
+      wget -O karaf.tar.gz http://archive.apache.org/dist/karaf/4.3.3/apache-karaf-4.3.3.tar.gz &&
+      tar -zvxf karaf.tar.gz &&
+      rm karaf.tar.gz &&
+      cd /workspace/how-to-ds-in-karaf &&
+      mvn clean install
+    command: >
+      karaf debug
+    name: Karaf
+  - command: >
+      cd /workspace/apache-karaf-4.3.3/data/log/ &&
+      tail -f karaf.log
+    name: Karaf_Log
+
+vscode:
+  extensions:
+    - redhat.java
+    - vscjava.vscode-java-debug
+    - eamodio.gitlens
+    - redhat.vscode-commons
+    - gabrielbb.vscode-lombok
+    - ryanluker.vscode-coverage-gutters
+    - vscjava.vscode-java-test
